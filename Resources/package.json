@@ -1,13 +1,29 @@
 {
-  "name": "Fhirserversimplifier",
-  "version": "0.1.0",
-  "description": "Put a description here",
+  "name": "hl7.fhir.no.basis",
+  "version": "2.1.1",
+  "description": "Norwegian core profiles for R4\r\nversion 2.1.1\r\n\r\nAbout the bugfix:\r\n\r\nDate: 2021-11-04\r\nversion: 2.1.1\r\n* `no-Basis-Procedure` replaced oid reference to ICPC-2 slice with uri in element Procedure.code\r\n* `no-basis-icpc-2` added NamingSystem for ICPC-2\r\n",
+  "author": "thomiz",
+  "keywords": [
+    "no",
+    "Norway",
+    "no-basis",
+    "core",
+    "HL7-Norway"
+  ],
+  "title": "HL7 Norway no-basis",
+  "fhirVersions": [
+    "4.0.1"
+  ],
+  "maintainers": [
+    {
+      "name": "HL7 Norway",
+      "email": "info@hl7.no"
+    }
+  ],
+  "canonical": "http://hl7.no/fhir/",
+  "url": "https://simplifier.net/guide/no-basis-entities-individuals/introduction",
   "dependencies": {
     "hl7.fhir.core": "4.0.1",
-    "hl7.fhir.r4.core": "4.0.1",
-    "hl7.fhir.no.basis": "2.0.14"
-  },
-  "fhirVersions": [
-    "4.0.0"
-  ]
+    "hl7.fhir.r4.core": "4.0.1"
+  }
 }

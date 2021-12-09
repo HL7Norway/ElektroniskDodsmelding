@@ -31,12 +31,19 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" />
   <derivation value="constraint" />
   <differential>
+    <element id="QuestionnaireResponse.questionnaire">
+      <path value="QuestionnaireResponse.questionnaire" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
     <element id="QuestionnaireResponse.subject">
       <path value="QuestionnaireResponse.subject" />
+      <min value="1" />
       <type>
         <code value="Reference" />
         <targetProfile value="http://hl7.no/fhir/StructureDefinition/no-basis-Patient" />
       </type>
+      <mustSupport value="true" />
     </element>
     <element id="QuestionnaireResponse.subject.reference">
       <path value="QuestionnaireResponse.subject.reference" />
@@ -52,11 +59,13 @@
     </element>
     <element id="QuestionnaireResponse.source">
       <path value="QuestionnaireResponse.source" />
+      <min value="1" />
       <type>
         <code value="Reference" />
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/PractitionerRole" />
       </type>
+      <mustSupport value="true" />
     </element>
     <element id="QuestionnaireResponse.source.reference">
       <path value="QuestionnaireResponse.source.reference" />

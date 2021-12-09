@@ -40,9 +40,14 @@
       <path value="PractitionerRole.organization" />
       <requirements value="There are currently no logical identifiers for PractitionerRoles in Norway, which is why 'display' is used." />
       <min value="1" />
+      <mustSupport value="true" />
     </element>
     <element id="PractitionerRole.organization.display">
       <path value="PractitionerRole.organization.display" />
+      <mustSupport value="true" />
+    </element>
+    <element id="PractitionerRole.location">
+      <path value="PractitionerRole.location" />
       <mustSupport value="true" />
     </element>
     <element id="PractitionerRole.telecom">

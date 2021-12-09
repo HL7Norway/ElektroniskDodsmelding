@@ -103,5 +103,14 @@
       <requirements value="Required when deceased does not have a Norwegian National identity number (no FNR/DNR)." />
       <mustSupport value="true" />
     </element>
+    <element id="Patient.generalPractitioner">
+      <path value="Patient.generalPractitioner" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/DodsmeldingPractitionerRole" />
+        <targetProfile value="http://hl7.no/fhir/StructureDefinition/no-basis-PractitionerRole" />
+      </type>
+      <mustSupport value="true" />
+    </element>
   </differential>
 </StructureDefinition>
