@@ -116,8 +116,14 @@ Response:
                                 "code": "4",
                                 "display": "Annen helseinstitusjon - Inkluderer alle typer pleie- og omsorgsinstitusjoner som bo- og behandlingssenter, bofellesskap, dagsenter, bo- og aktivitetssenter i tillegg til sykestuer, medisinske sentre, rehabiliteringssenter o.l."
                             }
+                        },
+                        {
+                            "question": "institution_unknown_checkbox",
+                            "operator": "!=",
+                            "answerBoolean": true
                         }
                     ],
+                    "enableBehavior": "all",
                     "required": true,
                     "maxLength": 220
                 },
@@ -141,6 +147,13 @@ Response:
                     "linkId": "municipality",
                     "text": "I hvilken kommune døde personen?",
                     "type": "choice",
+                    "enableWhen": [
+                        {
+                            "question": "municipality_unknown_checkbox",
+                            "operator": "!=",
+                            "answerBoolean": true
+                        }
+                    ],
                     "required": true,
                     "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=3402&query={query}"
                 },
