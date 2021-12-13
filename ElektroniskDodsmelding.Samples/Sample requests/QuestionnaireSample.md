@@ -1,4 +1,6 @@
 ## Questionnaire sample request
+The behavior of the questionnaire can be explored using for example LHC's FHIR Questionnaire renderer: https://lhcforms.nlm.nih.gov/lhcforms
+
 
 Request: GET http://{environment}/Questionnaire/1
 
