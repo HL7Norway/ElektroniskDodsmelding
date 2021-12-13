@@ -3,7 +3,7 @@
 Request: GET http://{environment}/Questionnaire/1
 
 Response:
-´´´
+```json
 {
     "resourceType": "Questionnaire",
     "id": "1",
@@ -935,4 +935,4 @@ Response:
         }
     ]
 }
-´´´
+```

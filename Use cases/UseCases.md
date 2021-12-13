@@ -27,7 +27,7 @@ A couple of things to note:
 * The questionnaire uses the FHIR extension [constraint](http://hl7.org/fhir/StructureDefinition/questionnaire-constraint) in order to enforce some of the more complex rules, e.g. at least one cause of death must be registered.
 * The questionnaire items are structured in a hierarchical manner. Each item in the outermost layer are of type group and contains related questions. 
 * The set of possible answers is included in most of the questions through the answerOption field. The exceptions are the ICD-10 and municipality code sets, which due to their size use the answerValueSet field. It contains the absolute URL to the endpoint for searching in the code sets. 
-´´´
+```json
 {
     "resourceType": "Questionnaire",
     "id": "1",
@@ -81,6 +81,6 @@ A couple of things to note:
         ...
     ]
 }
-´´´
+```
 
 ***
