@@ -1,4 +1,4 @@
-﻿namespace ElektroniskDodsmelding.Samples.Tests
+﻿namespace ElektroniskDodsmelding.Samples.Tests.Constants
 {
     internal class Constants
     {

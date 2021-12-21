@@ -1,4 +1,4 @@
-﻿namespace ElektroniskDodsmelding.Samples.Tests
+﻿namespace ElektroniskDodsmelding.Samples.Tests.Constants
 {
     /// <summary>
     /// Contain valid JWT (JSON Web Token) from HelseId Test (https://helseid-sts.test.nhn.no/) to be used for testing.
