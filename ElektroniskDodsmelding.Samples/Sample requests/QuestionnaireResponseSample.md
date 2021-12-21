@@ -2,7 +2,7 @@
 Valid QuestionnaireResponse that creates a cause of death registration. Returns a cause of death summary. 
 
 
-Request: POST http://{environment}/Questionnaire/
+Request: POST http://{environment}/QuestionnaireResponse/
 ```json
 {
     "resourceType": "QuestionnaireResponse",
@@ -16,7 +16,7 @@ Request: POST http://{environment}/Questionnaire/
     },
     "item": [
         {
-            "linkId": "timeOfDeath_group",
+            "linkId": "1_timeOfDeath_group",
             "item": [
                 {
                     "linkId": "timeOfDeath",
@@ -29,7 +29,7 @@ Request: POST http://{environment}/Questionnaire/
             ]
         },
         {
-            "linkId": "placeOfDeath_group",
+            "linkId": "2_placeOfDeath_group",
             "item": [
                 {
                     "linkId": "placeOfDeath",
@@ -57,7 +57,7 @@ Request: POST http://{environment}/Questionnaire/
             ]
         },
         {
-            "linkId": "causeOfDeath_group",
+            "linkId": "3_causeOfDeath_group",
             "item": [
                 {
                     "linkId": "causeOfDeath_question_A_code",
@@ -86,7 +86,7 @@ Request: POST http://{environment}/Questionnaire/
             ]
         },
         {
-            "linkId": "additionalInfoAboutDamage_group",
+            "linkId": "4_additionalInfoAboutDamage_group",
             "item": [
                 {
                     "linkId": "additionalInfoAboutDamage_q1",
@@ -103,7 +103,7 @@ Request: POST http://{environment}/Questionnaire/
             ]
         },
         {
-            "linkId": "operation_group",
+            "linkId": "5_operation_group",
             "item": [
                 {
                     "linkId": "operation_impact_on_death",
@@ -116,27 +116,11 @@ Request: POST http://{environment}/Questionnaire/
                             }
                         }
                     ]
-                },
-                {
-                    "linkId": "operation_time",
-                    "answer": [
-                        {
-                            "valueDate": "2021-01-01"
-                        }
-                    ]
-                },
-                {
-                    "linkId": "operation_description",
-                    "answer": [
-                        {
-                            "valueString": "Logotomert manuelt på utenlansk sykehus"
-                        }
-                    ]
                 }
             ]
         },
         {
-            "linkId": "classification_group",
+            "linkId": "6_classification_group",
             "item": [
                 {
                     "linkId": "classification_death",
@@ -177,7 +161,7 @@ Request: POST http://{environment}/Questionnaire/
             ]
         },
         {
-            "linkId": "report",
+            "linkId": "7_obligation_to_notify",
             "item": [
                 {
                     "linkId": "report_unnatural",
