@@ -83,4 +83,108 @@ A couple of things to note:
 }
 ```
 
+**QuestionnaireResponse example**
+The QuestionnareResponse will contain the Questionnaire answers and result in a validated cause of death registration. 
+The response will contain a summary of the the cause of death registration.
+
+A cause of death registration request with only one answer is shown here for brevity, the whole request and response can be found [here](../ElektroniskDodsmelding.Samples/Sample%20requests/QuestionnaireResponseSample.md).
+```json
+{
+    "resourceType": "QuestionnaireResponse",
+    "questionnaire": "/Questionnaire/1",
+    "status": "completed",
+    "subject": {
+        "reference": "Patient/1028"
+    },
+    "author": {
+        "reference": "PractitionerRole/3024"
+    },
+    "item": [
+        {
+            "linkId": "timeOfDeath_group",
+            "item": [
+                {
+                    "linkId": "timeOfDeath",
+                    "answer": [
+                        {
+                            "valueTime": "10:00:00"
+                        }
+                    ]
+                }
+            ]
+        },
+        .....
+   ]
+}
+```
+
+Results in a response with a cause of death registgration summary like this:
+```json
+{
+    "resourceType": "QuestionnaireResponse",
+    "id": "b4e8d4cb-9a3a-41c2-8297-f11199b5bb54",
+    "questionnaire": "1",
+    "status": "completed",
+    "subject": {
+        "reference": "https://dodsmelding-fhir.utvikling.nhn.no/Patient/1028"
+    },
+    "authored": "2021-12-20T18:35:20.4396618+01:00",
+    "author": {
+        "reference": "https://dodsmelding-fhir.utvikling.nhn.no/PractitionerRole/3024"
+    }
+}
+```
+
+***
+
+## Error handling
+
+All our Fhir resources can return detailed error messages in terms of an OperationOutcome. More about Fhir OperationOutcome can be found [here](http://www.hl7.org/fhir/operationoutcome.html).
+Errors thrown during validation or processing will result in an issue in the OperationOutcome response. Each error are presented as an issue with 
+its readable message and detail that identifies the error within the system.
+
+There are mainly two sets of issues: 
+* Custom errors thrown during validation or processing results in issues from system https://github.com/HL7Norway/ElektroniskDodsmelding
+* Generall Fhir errors results in issues from system http://hl7.org/fhir/dotnet-api-operation-outcome 
+
+**OperationOutcome example** : An invalid QuestionnaireResponse request that resulted in a response with HttpStatus 500 (Internal Server Error) containing an OperationOutcome.
+```json
+{
+    "resourceType": "OperationOutcome",
+    "id": "f14b366e-6c45-4f90-95c3-0ce9298bf974",
+    "meta": {
+        "versionId": "9a50fbfe-6cc4-453c-91b7-adbe33ad6235",
+        "lastUpdated": "2021-12-20T17:06:06.9512308+00:00"
+    },
+    "issue": [
+        {
+            "severity": "error",
+            "code": "business-rule",
+            "details": {
+                "coding": [
+                    {
+                        "system": "https://github.com/HL7Norway/ElektroniskDodsmelding",
+                        "code": "0004"
+                    }
+                ]
+            },
+            "diagnostics": "Ugyldig kode for «Blir politiet varslet om unaturlig dødsfall»"
+        },
+        {
+            "severity": "error",
+            "code": "exception",
+            "details": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/dotnet-api-operation-outcome",
+                        "code": "5010"
+                    }
+                ],
+                "text": "Internal processing error."
+            }
+        }
+    ]
+}
+
+```
 ***
