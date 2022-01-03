@@ -45,7 +45,7 @@ namespace ElektroniskDodsmelding.Samples.Tests
             try
             {
                 // Currently the search will throw exception if the deceased don't exist as a patient already, and that's a good thing.
-                var searchPatientResult = await _fhirClient.SearchAsync<Patient>(new SearchParams("identifier", TestResources.ValidPatient.Identifier.First().Value));
+                var searchPatientResult = await _fhirClient.SearchUsingPostAsync<Patient>(new SearchParams("identifier", TestResources.ValidPatient.Identifier.First().Value));
                 var existingPatient = searchPatientResult?.Entry
                     .FirstOrDefault(p => p.Resource.TypeName == nameof(Patient))
                     ?.Resource as Patient;
@@ -82,7 +82,7 @@ namespace ElektroniskDodsmelding.Samples.Tests
             Patient patient = null;
             try
             {
-                var searchPatientResult = await _fhirClient.SearchAsync<Patient>(new SearchParams("identifier",
+                var searchPatientResult = await _fhirClient.SearchUsingPostAsync<Patient>(new SearchParams("identifier",
                     TestResources.ValidPatient.Identifier.First().Value));
                 var existingPatient = searchPatientResult?.Entry
                     .FirstOrDefault(p => p.Resource.TypeName == nameof(Patient))
