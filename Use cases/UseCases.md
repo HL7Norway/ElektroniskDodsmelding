@@ -9,6 +9,9 @@ Finally, the patient should be posted with a valid Identifier, DeceasedDate, and
 
 ![](../Pictures/register_death_message_sequence_diagram.png "Sequence diagram of registering a death message")
 
+See create PractitionerRole example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/PractitionerRole.md)
+See create Patient example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient.md)
+
 ### Register cause of death
 Sending a cause of death message starts by calling a GET on the Questionnaire resource, which contains information about the questions and possible answers. 
 
@@ -16,17 +19,17 @@ The QuestionnaireResponse should contain the QuestionnaireID, PatientID, Practit
 
 ![](../Pictures/register_cause_of_death_sequence_diagram.png "Sequence diagram of registering a cause of death message")
 
-
-***
-**Note**: The answerValueSet of the questions asking directly about cause of death is quite large (~22000 codes) and is frequently updated by FHI. It therefore refers to a separate endpoint which will return the ValueSet. 
+> **Note:** 
+> The answerValueSet of the questions asking directly about cause of death is quite large (~22000 codes) and is frequently updated by FHI. It therefore refers to a separate endpoint which will return the ValueSet. 
 
 **Questionnaire example**
 Sending a GET request to http://{environment}/Questionnaire/1 will return the cause of death questionnaire in JSON-format. Only one question is shown here for brevity, but the whole response can be found [here](../ElektroniskDodsmelding.Samples/Sample%20requests/QuestionnaireSample.md).
 
-A couple of things to note:
-* The questionnaire uses the FHIR extension [constraint](http://hl7.org/fhir/StructureDefinition/questionnaire-constraint) in order to enforce some of the more complex rules, e.g. at least one cause of death must be registered.
-* The questionnaire items are structured in a hierarchical manner. Each item in the outermost layer are of type group and contains related questions. 
-* The set of possible answers is included in most of the questions through the answerOption field. The exceptions are the ICD-10 and municipality code sets, which due to their size use the answerValueSet field. It contains the absolute URL to the endpoint for searching in the code sets. 
+> **Note:**
+> * The questionnaire uses the FHIR extension [constraint](http://hl7.org/fhir/StructureDefinition/questionnaire-constraint) in order to enforce some of the more complex rules, e.g. at least one cause of death must be registered.
+> * The questionnaire items are structured in a hierarchical manner. Each item in the outermost layer are of type group and contains related questions. 
+> * The set of possible answers is included in most of the questions through the answerOption field. The exceptions are the ICD-10 and municipality code sets, which due to their size use the answerValueSet field. It contains the absolute URL to the endpoint for searching in the code sets. 
+
 ```json
 {
     "resourceType": "Questionnaire",
@@ -85,7 +88,7 @@ A couple of things to note:
 
 **QuestionnaireResponse example**
 The QuestionnareResponse will contain the Questionnaire answers and result in a validated cause of death registration. 
-The response will contain a summary of the the cause of death registration.
+The response will contain a summary of the cause of death registration.
 
 A cause of death registration request with only one answer is shown here for brevity, the whole request and response can be found [here](../ElektroniskDodsmelding.Samples/Sample%20requests/QuestionnaireResponseSample.md).
 ```json
@@ -118,7 +121,7 @@ A cause of death registration request with only one answer is shown here for bre
 }
 ```
 
-Results in a response with a cause of death registgration summary like this:
+Results in a response with a cause of death registration summary like this:
 ```json
 {
     "resourceType": "QuestionnaireResponse",
@@ -135,6 +138,22 @@ Results in a response with a cause of death registgration summary like this:
 }
 ```
 
+The cause of death registration is currently available as a legal document "Legeerklæring" PDF in Elektronisk dødsmelding Web at https://{environment}.helsepunkt.no/dodsmelding/mineregistreringer. This document is only available for the doctor who completed the registration.
+
+## Change time of death on existing death message
+A change in time of death on a Patient can be done by any authorized doctor. 
+It can be done following the same steps as for register death message only the Patient will during search Patient by id or by identifier be registered as dead. During create of Patient enter the new time of death. 
+
+## Abort death message
+If a person by mistake is reported as dead, it is important to abort the death message as soon as possible. Only abort a death message if the person is not dead. Right after the abort message is sent the doctor must contact Norsk helsenett operasjonssenter by phone +47 73 56 59 99. This will trigger a abort procedure at Norsk helsenett. It is important to establish dialog between Norsk helsenett/Norwegian tax office and the reporting doctor to prevent the consequences of reporting a person dead that in fact is not. Especially if this happens outside working hours.
+
+Creating an abort death message can be done by any authorized doctor ca 10 min after the death message registration is created. The doctor completed the death message registration is able to abort it immediately. 
+It can be done by following the same steps as for "Change time of death on existing death message" above, only now set the deceased field to false.
+
+See example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-abort.md)
+
+> **Note:** By changing the time of death or aborting the death message, related current cause of death registration will be updated in the cause of death register at FHI, but the "Legeerklæring" PDF created during the cause of death registgration is not updated.
+
 ***
 
 ## Error handling
@@ -145,7 +164,7 @@ its readable message and detail that identifies the error within the system.
 
 There are mainly two sets of issues: 
 * Custom errors thrown during validation or processing results in issues from system https://github.com/HL7Norway/ElektroniskDodsmelding
-* Generall Fhir errors results in issues from system http://hl7.org/fhir/dotnet-api-operation-outcome 
+* General Fhir errors results in issues from system http://hl7.org/fhir/dotnet-api-operation-outcome 
 
 **OperationOutcome example** : An invalid QuestionnaireResponse request that resulted in a response with HttpStatus 500 (Internal Server Error) containing an OperationOutcome.
 ```json
