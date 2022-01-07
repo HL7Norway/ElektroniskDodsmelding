@@ -56,5 +56,5 @@ Response:
 
 > **Note:**
 > * Reference to the PractitionerRole is needed to create both Patient and QuestionnaireResponse. 
-> * A reference to the created resources above looks like this: PractitionerRole/3028. The signed in doctor can only use PractitionerRole related to himself. \
+> * A reference to the created resources above looks like this: PractitionerRole/3028. The signed in doctor can only use PractitionerRole related to himself.
 > * GET http://{environment}/PractitionerRole/{id} is also available.
