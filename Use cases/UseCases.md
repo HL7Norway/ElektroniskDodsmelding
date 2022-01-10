@@ -141,13 +141,12 @@ Results in a response with a cause of death registration summary like this:
 The cause of death registration is currently available as a legal document "Legeerklæring" PDF in Elektronisk dødsmelding Web at https://{environment}.helsepunkt.no/dodsmelding/mineregistreringer. This document is only available for the doctor who completed the registration.
 
 ## Change time of death on existing death message
-A change in time of death on a Patient can be done by any authorized doctor. 
-It can be done following the same steps as for register death message only the Patient will during search Patient by id or by identifier be registered as dead. During create of Patient enter the new time of death. 
+A change can be done by overwriting the existing time of death, simply register a new death message on the same patient.
 
 ## Abort death message
 If a person by mistake is reported as dead, it is important to abort the death message as soon as possible. Only abort a death message if the person is not dead. Right after the abort message is sent the doctor must contact Norsk helsenett operasjonssenter by phone +47 73 56 59 99. This will trigger a abort procedure at Norsk helsenett. It is important to establish dialog between Norsk helsenett/Norwegian tax office and the reporting doctor to prevent the consequences of reporting a person dead that in fact is not. Especially if this happens outside working hours.
 
-Creating an abort death message can be done by any authorized doctor ca 10 min after the death message registration is created. The doctor completed the death message registration is able to abort it immediately. 
+Creating an abort death message can be done by any authorized doctor approximately 10 min after the death message registration is created. The doctor completed the death message registration is able to abort it immediately. 
 It can be done by following the same steps as for "Change time of death on existing death message" above, only now set the deceased field to false.
 
 See example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-abort.md)
