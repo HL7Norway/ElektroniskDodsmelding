@@ -5,7 +5,7 @@
     <versionId value="3" />
     <lastUpdated value="2021-08-31T22:03:17.777+00:00" />
   </meta>
-  <url value="https://example.org/fhir/StructureDefinition/CauseOfDeathQuestionnaireResponse" />
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/CauseOfDeathQuestionnaireResponse" />
   <name value="CauseOfDeathQuestionnaireResponse" />
   <status value="draft" />
   <date value="2021-08-31T22:03:16.8478992+00:00" />

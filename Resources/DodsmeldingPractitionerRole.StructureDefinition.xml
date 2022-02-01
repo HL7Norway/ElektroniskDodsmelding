@@ -5,10 +5,11 @@
     <versionId value="4" />
     <lastUpdated value="2021-09-13T08:33:59.324+00:00" />
   </meta>
-  <url value="https://example.org/fhir/StructureDefinition/DodsmeldingPractitionerRole" />
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/DodsmeldingPractitionerRole" />
   <name value="DodsmeldingPractitionerRole" />
   <status value="draft" />
   <date value="2021-09-13T08:34:00.6837164+00:00" />
+  <description value="The contact information to the doctor when in the role of reporting a death message." />
   <fhirVersion value="4.0.1" />
   <mapping>
     <identity value="v2" />

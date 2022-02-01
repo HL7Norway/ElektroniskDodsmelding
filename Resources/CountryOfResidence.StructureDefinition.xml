@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/CountryOfResidence" />
+  <name value="CountryOfResidence" />
+  <title value="Country of residence" />
+  <status value="draft" />
+  <purpose value="Used to define where a patinet is normaly living." />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Patient" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <comment value="Optional Extension Element" />
+      <max value="1" />
+      <mustSupport value="false" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://nhn.no/dodsmelding/fhir/StructureDefinition/CountryOfResidence" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <short value="Country of residence" />
+      <min value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCoding>
+        <system value="https://api.helsepunkt.no/api/koder/9043" />
+      </fixedCoding>
+      <example>
+        <label value="Country of residence" />
+        <valueCoding>
+          <system value="https://api.helsepunkt.no/api/koder/9043" />
+          <code value="SE" />
+          <display value="Sverige" />
+        </valueCoding>
+      </example>
+    </element>
+    <element id="Extension.value[x].coding.system">
+      <path value="Extension.value[x].coding.system" />
+      <label value="OID 9043" />
+      <short value="OID 9043" />
+      <definition value="From dodsmelding kode API. Based on volven oid 9043." />
+      <comment value="Is an url where the valid contry codes can be found" />
+      <min value="1" />
+      <fixedUri value="https://api.helsepunkt.no/api/koder/9043" />
+      <mustSupport value="true" />
+      <isModifier value="false" />
+    </element>
+    <element id="Extension.value[x].coding.version">
+      <path value="Extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].coding.code">
+      <path value="Extension.value[x].coding.code" />
+      <label value="Country code" />
+      <short value="Country code" />
+      <comment value="Country code is defined by 3 characters" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Extension.value[x].coding.display">
+      <path value="Extension.value[x].coding.display" />
+      <label value="Country name" />
+      <short value="Country name" />
+    </element>
+    <element id="Extension.value[x].coding.userSelected">
+      <path value="Extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].text">
+      <path value="Extension.value[x].text" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
