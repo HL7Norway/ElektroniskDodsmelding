@@ -31,6 +31,33 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" />
   <derivation value="constraint" />
   <differential>
+    <element id="QuestionnaireResponse.extension">
+      <path value="QuestionnaireResponse.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="0" />
+    </element>
+    <element id="QuestionnaireResponse.extension:deathCertificate">
+      <path value="QuestionnaireResponse.extension" />
+      <sliceName value="deathCertificate" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://example.org/fhir/StructureDefinition/DeathCertificate" />
+      </type>
+    </element>
+    <element id="QuestionnaireResponse.extension:deathCertificate.value[x]">
+      <path value="QuestionnaireResponse.extension.value[x]" />
+      <comment value="." />
+      <requirements value="After submitting a Cause of death QuestionnaireResponse, a death certificate will be generated and available at the referenced endpoint." />
+      <mustSupport value="true" />
+    </element>
     <element id="QuestionnaireResponse.questionnaire">
       <path value="QuestionnaireResponse.questionnaire" />
       <min value="1" />
