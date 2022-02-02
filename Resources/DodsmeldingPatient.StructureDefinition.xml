@@ -34,19 +34,6 @@
       <min value="0" />
       <max value="0" />
     </element>
-    <element id="Patient.extension:CountryOfResidence">
-      <path value="Patient.extension" />
-      <sliceName value="CountryOfResidence" />
-      <label value="CountryOfResidence" />
-      <short value="CountryOfResidence" />
-      <definition value="Onlye for use on patients with foreign identifier" />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://nhn.no/dodsmelding/fhir/StructureDefinition/CountryOfResidence" />
-      </type>
-    </element>
     <element id="Patient.extension:ReasonForStay">
       <path value="Patient.extension" />
       <sliceName value="ReasonForStay" />
@@ -59,10 +46,6 @@
         <code value="Extension" />
         <profile value="http://nhn.no/dodsmelding/fhir/StructureDefinition/ReasonForStay" />
       </type>
-    </element>
-    <element id="Patient.extension:ReasonForStay.value[x]">
-      <path value="Patient.extension.value[x]" />
-      <min value="1" />
     </element>
     <element id="Patient.identifier">
       <path value="Patient.identifier" />
@@ -211,13 +194,57 @@
     </element>
     <element id="Patient.address">
       <path value="Patient.address" />
+      <short value="Residence" />
       <comment value="Only the country of residence is of interest." />
       <requirements value="Required only when the deceased does not have a Norwegian National identity number (no FNR/DNR)." />
+      <max value="1" />
+      <example>
+        <label value="Residence" />
+        <valueAddress>
+          <country value="SE" />
+        </valueAddress>
+      </example>
+    </element>
+    <element id="Patient.address.use">
+      <path value="Patient.address.use" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.type">
+      <path value="Patient.address.type" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.text">
+      <path value="Patient.address.text" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.line">
+      <path value="Patient.address.line" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.city">
+      <path value="Patient.address.city" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.district">
+      <path value="Patient.address.district" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.state">
+      <path value="Patient.address.state" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.postalCode">
+      <path value="Patient.address.postalCode" />
       <max value="0" />
     </element>
     <element id="Patient.address.country">
       <path value="Patient.address.country" />
+      <label value="Country code" />
+      <short value="Country code" />
+      <definition value="Country - a nation as commonly understood or generally accepted. Defined by a 2 letter code." />
+      <comment value="ISO 3166 2 letter codes used in place of a human readable country name. Will be validated againt https://api.helsepunkt.no/api/koder/9043 that holds the defined country codes suppoted." />
       <requirements value="Required when deceased does not have a Norwegian National identity number (no FNR/DNR)." />
+      <min value="1" />
       <mustSupport value="true" />
     </element>
     <element id="Patient.maritalStatus">
