@@ -129,11 +129,11 @@ Results in a response with a cause of death registration summary like this:
     "questionnaire": "1",
     "status": "completed",
     "subject": {
-        "reference": "https://dodsmelding-fhir.utvikling.nhn.no/Patient/1028"
+        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/Patient/1028"
     },
     "authored": "2021-12-20T18:35:20.4396618+01:00",
     "author": {
-        "reference": "https://dodsmelding-fhir.utvikling.nhn.no/PractitionerRole/3024"
+        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/PractitionerRole/3024"
     }
 }
 ```
