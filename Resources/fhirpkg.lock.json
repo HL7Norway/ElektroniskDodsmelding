@@ -1,8 +1,9 @@
 {
-  "updated": "2021-12-09T10:52:34.754648+01:00",
+  "updated": "2022-02-01T13:47:41.6883506+01:00",
   "dependencies": {
     "hl7.fhir.core": "4.0.1",
-    "hl7.fhir.r4.core": "4.0.1"
+    "hl7.fhir.r4.core": "4.0.1",
+    "hl7.fhir.no.basis": "2.1.1"
   },
   "missing": {
     "hl7.fhir.r3.core": "4.0.1",

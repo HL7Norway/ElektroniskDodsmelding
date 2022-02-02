@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="https://example.org/fhir/StructureDefinition/DeathCertificate" />
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate" />
   <name value="DeathCertificate" />
   <status value="draft" />
   <fhirVersion value="4.0.1" />
@@ -16,7 +16,7 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="https://example.org/fhir/StructureDefinition/DeathCertificate" />
+      <fixedUri value="http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />

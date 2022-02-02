@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/ReasonForStay" />
+  <name value="ReasonForStay" />
+  <title value="Reason for stay" />
+  <status value="draft" />
+  <description value="The reason a patient is in the country" />
+  <purpose value="To define the reason for a foreign patient's stay in the country." />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Patient" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://nhn.no/dodsmelding/fhir/StructureDefinition/ReasonForStay" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+      <example>
+        <label value="Reason for stay" />
+        <valueCoding>
+          <system value="https://api.helsepunkt.no/api/koder/99012" />
+          <code value="4" />
+          <display value="Turist" />
+        </valueCoding>
+      </example>
+    </element>
+    <element id="Extension.value[x].coding.system">
+      <path value="Extension.value[x].coding.system" />
+      <label value="OID 99012" />
+      <short value="OID 99012" />
+      <definition value="From dodsmelding kode API. Based on volven oid 99012." />
+      <min value="1" />
+      <fixedUri value="https://api.helsepunkt.no/api/koder/99012" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Extension.value[x].coding.version">
+      <path value="Extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].coding.code">
+      <path value="Extension.value[x].coding.code" />
+      <label value="Reason for stay code" />
+      <short value="Reason for stay code" />
+      <comment value="Code defined by a number" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].coding.display">
+      <path value="Extension.value[x].coding.display" />
+      <label value="Reason for stay description" />
+      <short value="Reason for stay description" />
+      <example>
+        <label value="Reason for stay discription" />
+        <valueString value="Turist" />
+      </example>
+    </element>
+    <element id="Extension.value[x].coding.userSelected">
+      <path value="Extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].text">
+      <path value="Extension.value[x].text" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

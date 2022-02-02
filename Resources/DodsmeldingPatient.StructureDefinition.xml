@@ -5,7 +5,7 @@
     <versionId value="6" />
     <lastUpdated value="2021-10-05T08:34:09.723+00:00" />
   </meta>
-  <url value="https://example.org/fhir/StructureDefinition/DodsmeldingPatient" />
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/DodsmeldingPatient" />
   <name value="DodsmeldingPatient" />
   <status value="draft" />
   <date value="2021-10-05T08:34:09.8882667+00:00" />
@@ -16,6 +16,37 @@
   <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Patient" />
   <derivation value="constraint" />
   <differential>
+    <element id="Patient.extension">
+      <path value="Patient.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="0" />
+    </element>
+    <element id="Patient.extension:citizenship">
+      <path value="Patient.extension" />
+      <sliceName value="citizenship" />
+      <short value="C" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element id="Patient.extension:ReasonForStay">
+      <path value="Patient.extension" />
+      <sliceName value="ReasonForStay" />
+      <label value="ReasonForStay" />
+      <short value="ReasonForStay" />
+      <definition value="Onlye for use on patients with foreign identifier" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://nhn.no/dodsmelding/fhir/StructureDefinition/ReasonForStay" />
+      </type>
+    </element>
     <element id="Patient.identifier">
       <path value="Patient.identifier" />
       <mustSupport value="true" />
@@ -47,6 +78,71 @@
       <comment value="Person uten fødselsnummer (PUF)" />
       <mustSupport value="true" />
     </element>
+    <element id="Patient.identifier:PUF.type">
+      <path value="Patient.identifier.type" />
+      <example>
+        <label value="Identifier type" />
+        <valueCodeableConcept>
+          <coding>
+            <system value="https://api.helsepunkt.no/api/koder/8116" />
+            <code value="SEF" />
+            <display value="Svensk 'personnummer'" />
+          </coding>
+        </valueCodeableConcept>
+      </example>
+    </element>
+    <element id="Patient.identifier:PUF.type.coding.system">
+      <path value="Patient.identifier.type.coding.system" />
+      <label value="OID 8116" />
+      <short value="OID 8116" />
+      <definition value="From dodsmelding kode API. Based on codes from Volven oid 8116. Used in defining PUF identifier type. See https://www.ehelse.no/teknisk-dokumentasjon/oid-identifikatorserier-i-helse-og-omsorgstjenesten" />
+      <min value="1" />
+      <fixedUri value="https://api.helsepunkt.no/api/koder/8116" />
+    </element>
+    <element id="Patient.identifier:PUF.type.coding.version">
+      <path value="Patient.identifier.type.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Patient.identifier:PUF.type.coding.code">
+      <path value="Patient.identifier.type.coding.code" />
+      <label value="Identifier type code" />
+      <short value="Identifier type code" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:PUF.type.coding.display">
+      <path value="Patient.identifier.type.coding.display" />
+      <short value="Identifier type description" />
+    </element>
+    <element id="Patient.identifier:PUF.type.coding.userSelected">
+      <path value="Patient.identifier.type.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Patient.identifier:PUF.type.text">
+      <path value="Patient.identifier.type.text" />
+      <max value="0" />
+    </element>
+    <element id="Patient.identifier:PUF.system">
+      <path value="Patient.identifier.system" />
+      <max value="0" />
+    </element>
+    <element id="Patient.identifier:PUF.value">
+      <path value="Patient.identifier.value" />
+      <label value="Identity value for PUF" />
+      <short value="Identity value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:PUF.period">
+      <path value="Patient.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Patient.identifier:PUF.assigner">
+      <path value="Patient.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Patient.active">
+      <path value="Patient.active" />
+      <max value="0" />
+    </element>
     <element id="Patient.name">
       <path value="Patient.name" />
       <short value="Full name" />
@@ -75,6 +171,10 @@
       <path value="Patient.name.period" />
       <max value="0" />
     </element>
+    <element id="Patient.telecom">
+      <path value="Patient.telecom" />
+      <max value="0" />
+    </element>
     <element id="Patient.gender">
       <path value="Patient.gender" />
       <requirements value="Required when the deceased does not have a Norwegian National identity number." />
@@ -94,14 +194,78 @@
     </element>
     <element id="Patient.address">
       <path value="Patient.address" />
+      <short value="Residence" />
       <comment value="Only the country of residence is of interest." />
       <requirements value="Required only when the deceased does not have a Norwegian National identity number (no FNR/DNR)." />
       <max value="1" />
+      <example>
+        <label value="Residence" />
+        <valueAddress>
+          <country value="SE" />
+        </valueAddress>
+      </example>
+    </element>
+    <element id="Patient.address.use">
+      <path value="Patient.address.use" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.type">
+      <path value="Patient.address.type" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.text">
+      <path value="Patient.address.text" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.line">
+      <path value="Patient.address.line" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.city">
+      <path value="Patient.address.city" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.district">
+      <path value="Patient.address.district" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.state">
+      <path value="Patient.address.state" />
+      <max value="0" />
+    </element>
+    <element id="Patient.address.postalCode">
+      <path value="Patient.address.postalCode" />
+      <max value="0" />
     </element>
     <element id="Patient.address.country">
       <path value="Patient.address.country" />
+      <label value="Country code" />
+      <short value="Country code" />
+      <definition value="Country - a nation as commonly understood or generally accepted. Defined by a 2 letter code." />
+      <comment value="ISO 3166 2 letter codes used in place of a human readable country name. Will be validated againt https://api.helsepunkt.no/api/koder/9043 that holds the defined country codes suppoted." />
       <requirements value="Required when deceased does not have a Norwegian National identity number (no FNR/DNR)." />
+      <min value="1" />
       <mustSupport value="true" />
+    </element>
+    <element id="Patient.maritalStatus">
+      <path value="Patient.maritalStatus" />
+      <max value="0" />
+    </element>
+    <element id="Patient.multipleBirth[x]">
+      <path value="Patient.multipleBirth[x]" />
+      <max value="0" />
+    </element>
+    <element id="Patient.photo">
+      <path value="Patient.photo" />
+      <max value="0" />
+    </element>
+    <element id="Patient.contact">
+      <path value="Patient.contact" />
+      <max value="0" />
+    </element>
+    <element id="Patient.communication">
+      <path value="Patient.communication" />
+      <max value="0" />
     </element>
     <element id="Patient.generalPractitioner">
       <path value="Patient.generalPractitioner" />
@@ -111,6 +275,14 @@
         <targetProfile value="http://hl7.no/fhir/StructureDefinition/no-basis-PractitionerRole" />
       </type>
       <mustSupport value="true" />
+    </element>
+    <element id="Patient.managingOrganization">
+      <path value="Patient.managingOrganization" />
+      <max value="0" />
+    </element>
+    <element id="Patient.link">
+      <path value="Patient.link" />
+      <max value="0" />
     </element>
   </differential>
 </StructureDefinition>
