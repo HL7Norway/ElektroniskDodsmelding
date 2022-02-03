@@ -70,7 +70,7 @@ namespace ElektroniskDodsmelding.Samples.Tests
         /// 2. Search in Patient by Identifier (FNR) to see if the person is reported as dead. The Patient need to be reported as dead before creating a cause of death registration.
         /// 2.1. Only create new Patient if the patient is not already reported as dead.
         /// 3. Create a QuestionnaireResponse based on the questions defined in the Questionnaire
-        ///    ** See <see href="https://dodsmelding-fhir.utvikling.nhn.no/Questionnaire/1">the cause of death questionnaire</see>
+        ///    ** See <see href="https://fhir-dodsmelding.utvikling.nhn.no/Questionnaire/1">the cause of death questionnaire</see>
         ///    ** See <see href="https://github.com/HL7Norway/ElektroniskDodsmelding/blob/master/ElektroniskDodsmelding.Samples/Sample%20requests/QuestionnaireSample.md">the cause of death questionnaire sample</see>
         /// </summary>
         [Fact]

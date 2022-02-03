@@ -2,7 +2,7 @@
 {
     internal class Constants
     {
-        internal const string BaseUrl = "https://dodsmelding-fhir.utvikling.nhn.no";
+        internal const string BaseUrl = "https://fhir-dodsmelding.utvikling.nhn.no";
 
         internal static class Identifier
         {
