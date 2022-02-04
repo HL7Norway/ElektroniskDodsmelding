@@ -1,5 +1,5 @@
 ## Patient sample request
-Valid Patient that does not have a FNR/DNR identifier. Also refered to as foreingers or PUF. Creates a death message registration.
+Valid Patient that does not have a FNR/DNR identifier. Also referred to as foreigners or PUF. Creates a death message registration.
 
 
 Request: POST http://{environment}/Patient/
