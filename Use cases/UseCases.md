@@ -12,6 +12,9 @@ Finally, the patient should be posted with a valid Identifier, DeceasedDate, and
 See create PractitionerRole example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/PractitionerRole.md)
 See create Patient example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient.md)
 
+### Register death message where the deceased do not have a norwegian identifier (FNR/DNR) 
+Sending a death message where the deceased is a foreigner or for some reason do not have a norwegian identifier is also supported. These death messages requires more information related to deceased. See [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-foreigner.md). Foreigners or persons without (FNR/DNR) are also refered to as PUF (Person Uten Personnummer)
+
 ### Register cause of death
 Sending a cause of death message starts by calling a GET on the Questionnaire resource, which contains information about the questions and possible answers. 
 
@@ -152,6 +155,8 @@ It can be done by following the same steps as for "Change time of death on exist
 See example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-abort.md)
 
 > **Note:** By changing the time of death or aborting the death message, related current cause of death registration will be updated in the cause of death register at FHI, but the "Legeerklæring" PDF created during the cause of death registgration is not updated.
+
+> **OBS!** Currently death messages reported on foreigners does not support any changes or revocation. Will be supported in the near furture.
 
 ***
 
