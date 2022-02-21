@@ -2,7 +2,7 @@
 The behavior of the questionnaire can be explored using for example LHC's FHIR Questionnaire renderer: https://lhcforms.nlm.nih.gov/lhcforms
 
 
-Request: GET http://{environment}/Questionnaire/1
+Request: GET http://fhir-dodsmelding.{environment}.nhn.no/Questionnaire/1
 
 Response:
 ```json
@@ -157,7 +157,7 @@ Response:
                         }
                     ],
                     "required": true,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=3402&query={query}"
+                    "answerValueSet": "http://api.{environment}.helsepunkt.no/api/koder?oid=3402&query={query}"
                 },
                 {
                     "linkId": "municipality_unknown_checkbox",
@@ -193,7 +193,7 @@ Response:
                         }
                     ],
                     "required": true,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=7110&query={query}"
+                    "answerValueSet": "http:/api.{environment}.helsepunkt.no/api/koder?oid=7110&query={query}"
                 },
                 {
                     "linkId": "causeOfDeath_question_A_text",
@@ -270,7 +270,7 @@ Response:
                         }
                     ],
                     "required": false,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=7110&query={query}"
+                    "answerValueSet": "http://api.{environment}.helsepunkt.no/api/koder?oid=7110&query={query}"
                 },
                 {
                     "linkId": "causeOfDeath_question_B_text",
@@ -347,7 +347,7 @@ Response:
                         }
                     ],
                     "required": false,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=7110&query={query}"
+                    "answerValueSet": "http://api.{environment}.helsepunkt.no/api/koder?oid=7110&query={query}"
                 },
                 {
                     "linkId": "causeOfDeath_question_C_text",
@@ -424,7 +424,7 @@ Response:
                         }
                     ],
                     "required": false,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=7110&query={query}"
+                    "answerValueSet": "http://api.{environment}.helsepunkt.no/api/koder?oid=7110&query={query}"
                 },
                 {
                     "linkId": "causeOfDeath_question_D_text",
@@ -495,7 +495,7 @@ Response:
                     "type": "choice",
                     "required": false,
                     "repeats": true,
-                    "answerValueSet": "http://host.docker.internal:61517/api/koder?oid=7110&query={query}"
+                    "answerValueSet": "http://api.{environment}.helsepunkt.no/api/koder?oid=7110&query={query}"
                 }
             ]
         },

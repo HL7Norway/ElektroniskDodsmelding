@@ -2,7 +2,7 @@
 Valid Patient that creates a death message registration.
 
 
-Request: POST http://{environment}/Patient/
+Request: POST http://fhir-dodsmelding.{environment}.nhn.no/Patient/
 ```json
 {
   "resourceType": "Patient",

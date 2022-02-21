@@ -3,7 +3,7 @@ Create contact details for the signed in doctor.
 Will only create new PractitionerRole if the contact details do not exist otherwise return the existing PractitionerRole.
 
 
-Request: POST http://{environment}/PractitionerRole/
+Request: POST http://fhir-dodsmelding.{environment}.nhn.no/PractitionerRole/
 ```json
 {
     "resourceType": "PractitionerRole",
@@ -57,4 +57,4 @@ Response:
 > **Note:**
 > * Reference to the PractitionerRole is needed to create both Patient and QuestionnaireResponse. 
 > * A reference to the created resources above looks like this: PractitionerRole/3028. The signed in doctor can only use PractitionerRole related to himself.
-> * GET http://{environment}/PractitionerRole/{id} is also available.
+> * GET http://fhir-dodsmelding.{environment}.nhn.no/PractitionerRole/{id} is also available.

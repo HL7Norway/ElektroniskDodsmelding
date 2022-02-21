@@ -2,7 +2,7 @@
 Valid Patient that does not have a FNR/DNR identifier. Also referred to as foreigners or PUF. Creates a death message registration.
 
 
-Request: POST http://{environment}/Patient/
+Request: POST http://fhir-dodsmelding.{environment}.nhn.no/Patient/
 ```json
 {
     "resourceType": "Patient",
