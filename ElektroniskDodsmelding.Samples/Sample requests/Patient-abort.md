@@ -2,7 +2,7 @@
 Abort a death message registration. Will throw errors if the person is not reported as dead.
 
 
-Request: POST http://{environment}/Patient/
+Request: POST http://fhir-dodsmelding.{environment}.nhn.no/Patient/
 ```json
 {
   "resourceType": "Patient",

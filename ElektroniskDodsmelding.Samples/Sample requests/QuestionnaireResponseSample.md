@@ -2,7 +2,7 @@
 Valid QuestionnaireResponse that creates a cause of death registration. Returns a cause of death summary. 
 
 
-Request: POST http://{environment}/QuestionnaireResponse/
+Request: POST http://fhir-dodsmelding.{environment}.nhn.no/QuestionnaireResponse/
 ```json
 {
     "resourceType": "QuestionnaireResponse",
@@ -185,15 +185,21 @@ Response: HttpStatus 201(Created)
 ```json
 {
     "resourceType": "QuestionnaireResponse",
-    "id": "b4e8d4cb-9a3a-41c2-8297-f11199b5bb54",
+    "id": "ac5e11da-d455-4e27-9645-3ff6aa64a0a1",
+    "extension": [
+        {
+            "url": "http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate",
+            "valueString": "https://api.{environment}.helsepunkt.no/api/dar/meldinger/ac5e11da-d455-4e27-9645-3ff6aa64a0a1/pdf"
+        }
+    ],
     "questionnaire": "1",
     "status": "completed",
     "subject": {
-        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/Patient/1028"
+        "reference": "https://fhir-dodsmelding.{environment}.nhn.no/Patient/1028"
     },
     "authored": "2021-12-20T18:35:20.4396618+01:00",
     "author": {
-        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/PractitionerRole/3024"
+        "reference": "https://fhir-dodsmelding.{environment}.nhn.no/PractitionerRole/3024"
     }
 }
 ```
