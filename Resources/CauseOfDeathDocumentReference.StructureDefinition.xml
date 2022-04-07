@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://example.org/fhir/StructureDefinition/CauseOfDeathDocumentReference" />
+  <name value="CauseOfDeathDocumentReference" />
+  <title value="Death certificate document" />
+  <status value="draft" />
+  <date value="2022-04-01" />
+  <description value="The cause of death document is a pdf formated document." />
+  <purpose value="This document is a leagal document published by the Norwegian Institute of Public Health as a result of a cause of death registration." />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="DocumentReference" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/DocumentReference" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="DocumentReference.masterIdentifier">
+      <path value="DocumentReference.masterIdentifier" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.identifier">
+      <path value="DocumentReference.identifier" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.docStatus">
+      <path value="DocumentReference.docStatus" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.type">
+      <path value="DocumentReference.type" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.category">
+      <path value="DocumentReference.category" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.subject">
+      <path value="DocumentReference.subject" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.date">
+      <path value="DocumentReference.date" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.author">
+      <path value="DocumentReference.author" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.authenticator">
+      <path value="DocumentReference.authenticator" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.custodian">
+      <path value="DocumentReference.custodian" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.relatesTo">
+      <path value="DocumentReference.relatesTo" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.description">
+      <path value="DocumentReference.description" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.securityLabel">
+      <path value="DocumentReference.securityLabel" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content">
+      <path value="DocumentReference.content" />
+      <label value="Cause of death certificate document" />
+      <short value="Death certificate" />
+      <definition value="The cause of death certificate document as PDF format." />
+      <max value="1" />
+    </element>
+    <element id="DocumentReference.context">
+      <path value="DocumentReference.context" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

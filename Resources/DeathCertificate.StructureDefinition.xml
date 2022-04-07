@@ -20,12 +20,33 @@
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
-      <short value="URL to death certificate" />
-      <definition value="Absolute URL to the Dødsmelding API, which returns the death certificate as an object containing an array of bytes. See the API documentation (https://api.test.helsepunkt.no/swagger/index.html) for the Dar endpoint for more details." />
+      <label value="Reference to DocumentReference" />
+      <short value="Reference" />
+      <definition value="Reference to the death certificate document." />
       <min value="1" />
       <type>
-        <code value="string" />
+        <code value="Reference" />
       </type>
+    </element>
+    <element id="Extension.value[x].reference">
+      <path value="Extension.value[x].reference" />
+      <min value="1" />
+      <example>
+        <label value="Certificate document" />
+        <valueString value="https://fhir-dodsmelding.{environment}.nhn.no/DocumentReference/c59b1c88-1eea-4e6c-a5e3-c64e919a196d" />
+      </example>
+    </element>
+    <element id="Extension.value[x].type">
+      <path value="Extension.value[x].type" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].identifier">
+      <path value="Extension.value[x].identifier" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].display">
+      <path value="Extension.value[x].display" />
+      <max value="0" />
     </element>
   </differential>
 </StructureDefinition>

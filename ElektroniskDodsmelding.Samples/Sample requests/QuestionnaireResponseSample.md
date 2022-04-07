@@ -189,7 +189,7 @@ Response: HttpStatus 201(Created)
     "extension": [
         {
             "url": "http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate",
-            "valueString": "https://api.{environment}.helsepunkt.no/api/dar/meldinger/ac5e11da-d455-4e27-9645-3ff6aa64a0a1/pdf"
+            "reference":: "https://fhir-dodsmelding.{environment}.nhn.no/DocumentReference/ac5e11da-d455-4e27-9645-3ff6aa64a0a1"
         }
     ],
     "questionnaire": "1",
