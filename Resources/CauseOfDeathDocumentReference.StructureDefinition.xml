@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <url value="https://example.org/fhir/StructureDefinition/CauseOfDeathDocumentReference" />
   <name value="CauseOfDeathDocumentReference" />
-  <title value="Death certificate document" />
+  <title value="CauseOfDeathDocumentReference" />
   <status value="draft" />
   <date value="2022-04-01" />
   <description value="The cause of death document is a pdf formated document." />
@@ -28,6 +28,28 @@
     </element>
     <element id="DocumentReference.type">
       <path value="DocumentReference.type" />
+      <min value="1" />
+    </element>
+    <element id="DocumentReference.type.coding">
+      <path value="DocumentReference.type.coding" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCoding>
+        <system value="http://loinc.org" />
+        <code value="64297-5" />
+        <display value="Death certificate" />
+      </fixedCoding>
+    </element>
+    <element id="DocumentReference.type.coding.version">
+      <path value="DocumentReference.type.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.type.coding.userSelected">
+      <path value="DocumentReference.type.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.type.text">
+      <path value="DocumentReference.type.text" />
       <max value="0" />
     </element>
     <element id="DocumentReference.category">
@@ -72,6 +94,39 @@
       <short value="Death certificate" />
       <definition value="The cause of death certificate document as PDF format." />
       <max value="1" />
+    </element>
+    <element id="DocumentReference.content.attachment.contentType">
+      <path value="DocumentReference.content.attachment.contentType" />
+      <min value="1" />
+      <fixedCode value="application/pdf" />
+    </element>
+    <element id="DocumentReference.content.attachment.language">
+      <path value="DocumentReference.content.attachment.language" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.attachment.url">
+      <path value="DocumentReference.content.attachment.url" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.attachment.size">
+      <path value="DocumentReference.content.attachment.size" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.attachment.hash">
+      <path value="DocumentReference.content.attachment.hash" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.attachment.title">
+      <path value="DocumentReference.content.attachment.title" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.attachment.creation">
+      <path value="DocumentReference.content.attachment.creation" />
+      <max value="0" />
+    </element>
+    <element id="DocumentReference.content.format">
+      <path value="DocumentReference.content.format" />
+      <max value="0" />
     </element>
     <element id="DocumentReference.context">
       <path value="DocumentReference.context" />
