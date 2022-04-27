@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionalQuestionnaire" />
+  <name value="AdditionalQuestionnaire" />
+  <status value="draft" />
+  <description value="Additional messages requested by the National Insitute of Public Health realed to a cuase of death registration." />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="QuestionnaireResponse" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="AdditionalQuestionnaire" />
+      <definition value="An additional message request realed to a cuase of death registration." />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionalQuestionnaire" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <type>
+        <code value="Reference" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
