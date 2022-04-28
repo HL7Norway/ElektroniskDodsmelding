@@ -1,6 +1,6 @@
-## Use cases
+# Use cases
 
-### Register death message
+## Register death message
 Sending a death message is initiated by searching for a Patient based on its Identifier (either FNR or DNR), which will return a Bundle object containing matching Patients. 
 
 Then, if a PractitionerRoleID for the registering user is not available, a PractitionerRole object with contact information should be posted to receive one.
@@ -15,10 +15,11 @@ See create Patient example [here](../ElektroniskDodsmelding.Samples/Sample%20req
 ### Register death message where the deceased do not have a norwegian identifier (FNR/DNR) 
 Sending a death message where the deceased is a foreigner or for some reason does not have a Norwegian identifier is also supported. These death messages require more information related to the deceased. See [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-foreigner.md). Foreigners or persons without (FNR/DNR) are also refered to as PUF (Person Uten Personnummer)
 
-### Register cause of death
-Sending a cause of death message starts by calling a GET on the Questionnaire resource, which contains information about the questions and possible answers. 
+***
+## Register cause of death
+Sending a cause of death message starts by calling a GET on the Questionnaire resource, which contains information about the questions and possible answers.
 
-The QuestionnaireResponse should contain the QuestionnaireID, PatientID, PractitionerRoleID. Posting it will send the answers to FHI, and return the same object with a QuestionnaireResponseID.
+The QuestionnaireResponse should contain the QuestionnaireID, PatientID, PractitionerRoleID. Posting it will send the answers to FHI, and return the same object with a QuestionnaireResponseID. 
 
 ![](../Pictures/register_cause_of_death_sequence_diagram.png "Sequence diagram of registering a cause of death message")
 
@@ -129,23 +130,33 @@ Results in a response with a cause of death registration summary like this:
 {
     "resourceType": "QuestionnaireResponse",
     "id": "b4e8d4cb-9a3a-41c2-8297-f11199b5bb54",
+    "extension": [
+        {
+            "url": "http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate",
+            "valueReference": {
+                "reference": "https://fhir-dodsmelding.test.nhn.no/DocumentReference/b4e8d4cb-9a3a-41c2-8297-f11199b5bb54"
+            }
+        }
+    ]
     "questionnaire": "1",
     "status": "completed",
     "subject": {
-        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/Patient/1028"
+        "reference": "https://fhir-dodsmelding.test.nhn.no/Patient/1028"
     },
     "authored": "2021-12-20T18:35:20.4396618+01:00",
     "author": {
-        "reference": "https://fhir-dodsmelding.utvikling.nhn.no/PractitionerRole/3024"
+        "reference": "https://fhir-dodsmelding.test.nhn.no/PractitionerRole/3024"
     }
 }
 ```
 
 The cause of death registration is currently available as a legal document "Legeerklæring" PDF in Elektronisk dødsmelding Web at https://{environment}.helsepunkt.no/dodsmelding/mineregistreringer. This document is only available for the doctor who completed the registration.
 
+***
 ## Change time of death on existing death message
 A change can be done by overwriting the existing time of death, simply register a new death message on the same patient.
 
+***
 ## Abort death message
 If a person by mistake is reported as dead, it is important to abort the death message as soon as possible. Only abort a death message if the person is not dead. Right after the abort message is sent the doctor must contact Norsk helsenett operasjonssenter by phone +47 73 56 59 99. This will trigger a abort procedure at Norsk helsenett. It is important to establish dialog between Norsk helsenett/Norwegian tax office and the reporting doctor to prevent the consequences of reporting a person dead that in fact is not. Especially if this happens outside working hours.
 
@@ -157,6 +168,43 @@ See example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-a
 > **Note:** By changing the time of death or aborting the death message, related current cause of death registration will be updated in the cause of death register at FHI, but the "Legeerklæring" PDF created during the cause of death registgration is not updated.
 
 > **Warning:** Currently death messages reported on foreigners does not support any changes or revocation. Will be supported in the near furture.
+
+
+***
+## Additional message requests from the National Institute of Public Health 
+The National Institute of Public Health can in some cases request additinal information related to a reported casue of death message. These additinal message requests are available through the response of the original cause of death reagistration (QuestionnaireResponse). These question(s) need to be answered by the doctor that subittet the cause of death registration. The question(s) can be found by sending GET Questaionnaire with the addional messages Id and answered by sending a POST QuestaionnaireResponse. Example on a additional message Questaionnaire can be fount here
+
+**QuestionnaireResponse example** where an additional message is requested in an existing cause of death registration.
+```json
+{
+    "resourceType": "QuestionnaireResponse",
+    "id": "e0af5f25-e7d9-46d5-a8db-3cadbcd55373",
+    "extension": [
+        {
+            "url": "http://nhn.no/dodsmelding/fhir/StructureDefinition/DeathCertificate",
+            "valueReference": {
+                "reference": "https://fhir-dodsmelding.test.nhn.no/DocumentReference/e0af5f25-e7d9-46d5-a8db-3cadbcd55373"
+            }
+        },
+        {
+            "url": "http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionalQuestionnaire",
+            "valueReference": {
+                "reference": "https://fhir-dodsmelding.test.nhn.no/Questionnaire/s0af5f25-e7d9-46d5-a8db-3cadbcd55555"
+            }
+        }
+    ],
+    "questionnaire": "1",
+    "status": "completed",
+    "subject": {
+        "reference": "https://fhir-dodsmelding.test.nhn.no/Patient/1649"
+    },
+    "authored": "2022-02-18T09:58:26.5043478+01:00",
+    "author": {
+        "reference": "https://fhir-dodsmelding.test.nhn.no/PractitionerRole/280"
+    }
+}
+```
+
 
 ***
 
