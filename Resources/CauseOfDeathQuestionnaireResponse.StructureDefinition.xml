@@ -3,7 +3,7 @@
   <id value="95f2a653-444f-4354-a017-2962b790db91" />
   <meta>
     <versionId value="3" />
-    <lastUpdated value="2022-04-06T14:26:56.4693628+00:00" />
+    <lastUpdated value="2022-04-27T15:35:31.6958945+00:00" />
   </meta>
   <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/CauseOfDeathQuestionnaireResponse" />
   <name value="CauseOfDeathQuestionnaireResponse" />
@@ -58,8 +58,20 @@
     </element>
     <element id="QuestionnaireResponse.extension:deathCertificate.value[x]">
       <path value="QuestionnaireResponse.extension.value[x]" />
-      <short value="Reference" />
       <definition value="Reference to the death certificate dokument." />
+    </element>
+    <element id="QuestionnaireResponse.extension:AdditionalQuestionnaire">
+      <path value="QuestionnaireResponse.extension" />
+      <sliceName value="AdditionalQuestionnaire" />
+      <short value="AdditionalQuestionnaire" />
+      <definition value="An additinal message request requested by the National Institute of Public Health. OBS! Only supported in QuestionnaireResponce results, not as input in requests." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionalQuestionnaire" />
+      </type>
+      <isModifier value="false" />
     </element>
     <element id="QuestionnaireResponse.questionnaire">
       <path value="QuestionnaireResponse.questionnaire" />

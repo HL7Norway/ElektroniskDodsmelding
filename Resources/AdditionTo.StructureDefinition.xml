@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionTo" />
+  <name value="AdditionTo" />
+  <title value="AdditionTo" />
+  <status value="draft" />
+  <purpose value="Sdditional message requests created by the National Institute of Public Health related to a existing cause of death registration." />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Questionnaire" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="AdditonTo" />
+      <definition value="Refer to additional message requests created by the National Institute of Public Health related to a cause of death registration." />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://nhn.no/dodsmelding/fhir/StructureDefinition/AdditionTo" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <short value="AdditionTo" />
+      <definition value="Additinal message related to a cause of death registration" />
+      <type>
+        <code value="Reference" />
+      </type>
+    </element>
+    <element id="Extension.value[x].reference">
+      <path value="Extension.value[x].reference" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].type">
+      <path value="Extension.value[x].type" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].identifier">
+      <path value="Extension.value[x].identifier" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].display">
+      <path value="Extension.value[x].display" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
