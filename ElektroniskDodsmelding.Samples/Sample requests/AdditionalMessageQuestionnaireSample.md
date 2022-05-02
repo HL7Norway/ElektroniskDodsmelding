@@ -1,7 +1,7 @@
 ## Additional message Questionnaire sample request
 The behavior of the questionnaire can be explored using for example LHC's FHIR Questionnaire renderer: https://lhcforms.nlm.nih.gov/lhcforms
 
-The schema presents question(s) requested by a caseworker at the the National Institute of Public Health.
+The schema presents question(s) requested by a caseworker at the National Institute of Public Health.
 
 Request: GET http://fhir-dodsmelding.{environment}.nhn.no/Questionnaire/s0af5f25-e7d9-46d5-a8db-3cadbcd55555
 

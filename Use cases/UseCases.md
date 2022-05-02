@@ -172,7 +172,7 @@ See example [here](../ElektroniskDodsmelding.Samples/Sample%20requests/Patient-a
 
 ***
 ## Additional message requests from the National Institute of Public Health 
-The National Institute of Public Health can in some cases request additinal information related to a reported casue of death message. These additinal message requests are available through the response of the original cause of death reagistration (QuestionnaireResponse). These question(s) need to be answered by the doctor that subittet the cause of death registration. The question(s) can be found by sending GET Questaionnaire with the addional messages Id and answered by sending a POST QuestaionnaireResponse. Example on a additional message Questaionnaire can be fount here
+The National Institute of Public Health can in some cases request additional information related to a reported cause of death message. These additional message requests are available through the response of the original cause of death registration (QuestionnaireResponse). These question(s) need to be answered by the doctor that submitted the cause of death registration. The question(s) can be found by sending GET Questionnaire with the Id of the additional message and answered by sending a POST QuestaionnaireResponse. An example of an additional message Questionnaire can be found here
 
 **QuestionnaireResponse example** where an additional message is requested in an existing cause of death registration.
 ```json
